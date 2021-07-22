@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">ShoeStore</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+
+    <!-- Strings related to welcome page -->
+    <string name="welcome_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent erat ex, mattis quis magna vitae, semper ultricies nunc. Etiam ornare in nulla a commodo. Nam in sodales neque, vel congue lorem. Donec gravida, risus sit amet auctor lacinia, orci arcu tristique enim, pharetra tempus diam nunc nec dolor. Mauris suscipit libero quam, bibendum interdum purus semper id.</string>
+    <string name="next_btn_welcome">Next</string>
+
+    <!-- Strings related to instructions page -->
+    <string name="instructions_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent erat ex, mattis quis magna vitae, semper ultricies nunc. Etiam ornare in nulla a commodo. Nam in sodales neque, vel congue lorem. Donec gravida, risus sit amet auctor lacinia, orci arcu tristique enim, pharetra tempus diam nunc nec dolor. Mauris suscipit libero quam, bibendum interdum purus semper id.</string>
+    <string name="next_btn_instructions">Next</string>
+    <string name="fab_content_desc">+</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
