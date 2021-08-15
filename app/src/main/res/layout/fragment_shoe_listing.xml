@@ -2,38 +2,32 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/listing_coordinator"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <!--I use LinearLayout for displaying the list of shoes as with it I don't need any
+      additional attributes for adding views programmatically and I use ConstraintLayout for
+      relative positioning of ScrollView and floating button because of it's flexibility and
+      performance  -->
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/listing_constraint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Listing"/>
+            <LinearLayout
+                android:id="@+id/list"
+                style="@style/shoe_list"></LinearLayout>
 
-
-
-
-        </LinearLayout>
-
-    </ScrollView>
+        </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_btn_listing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="16dp"
-            android:contentDescription="@string/fab_content_desc"
-            app:srcCompat="@drawable/ic_plus_24dp" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            style="@style/add_btn_listing"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_add_white_36dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

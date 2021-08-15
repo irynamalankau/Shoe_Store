@@ -1,25 +1,26 @@
 package com.udacity.shoestore
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import com.udacity.shoestore.databinding.FragmentLoginBinding
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentWelcomeBinding
 
 class WelcomeFragment : Fragment() {
 
+    private lateinit var binding: FragmentWelcomeBinding
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        //set up data binding
-        val binding: FragmentWelcomeBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_welcome, container, false)
-        //set up navigation to the next fragment when the Next btn is clicked
-        binding.nextBtnWelcome.setOnClickListener{v: View ->
-            v.findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
+
+        //set up navigation to the Instructions fragment when the Next btn is clicked
+        binding.nextBtnWelcome.setOnClickListener{
+            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInstructionsFragment())
 
         }
 

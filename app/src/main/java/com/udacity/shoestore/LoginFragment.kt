@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentLoginBinding
 
 
@@ -18,8 +20,8 @@ class LoginFragment : Fragment() {
         val binding: FragmentLoginBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_login, container, false)
         //set up navigation to the next fragment when the Login btn is clicked
-        binding.login.setOnClickListener{v: View ->
-            v.findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+        binding.loginBtn.setOnClickListener{
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
 
         }
 

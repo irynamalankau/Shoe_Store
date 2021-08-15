@@ -1,33 +1,50 @@
 package com.udacity.shoestore
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.databinding.FragmentDetailsBinding
-import com.udacity.shoestore.databinding.FragmentInstructionsBinding
+import com.udacity.shoestore.models.StoreViewModel
+import com.udacity.shoestore.models.Shoe
 
 
 class DetailsFragment : Fragment() {
 
+    private lateinit var binding: FragmentDetailsBinding
+
+    private val viewModel: StoreViewModel by activityViewModels()
+
+    private val shoe = Shoe("", "", "", "")
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         //set up data binding
-        val binding: FragmentDetailsBinding = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_details, container, false)
-        //set up navigation to the next fragment when the Next btn is clicked
-        binding.saveBtnDetails.setOnClickListener{v: View ->
-            v.findNavController().navigate(DetailsFragmentDirections.actionDetailsFragmentToShoeListingFragment())
+
+        binding.shoe = shoe
+
+        binding.saveBtnDetails.setOnClickListener{
+            viewModel.shoesList.value?.add(shoe)
+            navigate()
+
         }
 
-        binding.cancelBtnDetails.setOnClickListener{v: View ->
-            v.findNavController().navigate(DetailsFragmentDirections.actionDetailsFragmentToShoeListingFragment())
+        binding.cancelBtnDetails.setOnClickListener{
+            navigate()
         }
 
         return binding.root
     }
+
+    private fun navigate(){
+        //set up navigation to the listing fragment
+            findNavController().navigate(DetailsFragmentDirections.actionDetailsFragmentToShoeListingFragment())
+        }
 
 }

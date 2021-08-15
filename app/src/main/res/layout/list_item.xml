@@ -1,35 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list_item"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="shoe"
+            type="com.udacity.shoestore.models.Shoe" />
+    </data>
 
-    <TextView
-        android:id="@+id/shoe_name_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Name" />
+    <!-- I'm using ConstraintLayout because it's flexible and easy to position my views relative
+   to each other-->
 
-    <TextView
-        android:id="@+id/company_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Company" />
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/list_item"
+        style="@style/card_list_item">
 
-    <TextView
-        android:id="@+id/size_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Size"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/description_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Description" />
+            <ImageView
+                android:id="@+id/shoe_imageView"
+                style="@style/icon_item"
+                android:src="@drawable/ic_shoes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/shoe_name_textView"
+                style="@style/shoe_name_textView"
+                android:text="@{@string/shoe_name(shoe.name)}"
+                app:layout_constraintStart_toEndOf="@+id/shoe_imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Name" />
+
+            <TextView
+                android:id="@+id/company_textView"
+                style="@style/company_textView"
+                android:text="@{@string/shoe_company(shoe.company)}"
+                app:layout_constraintStart_toStartOf="@+id/shoe_name_textView"
+                app:layout_constraintTop_toBottomOf="@+id/shoe_name_textView"
+                tools:text="Company" />
+
+            <TextView
+                android:id="@+id/size_textView"
+                style="@style/size_textView"
+                android:text="@{@string/shoe_size(shoe.size)}"
+                app:layout_constraintStart_toStartOf="@+id/company_textView"
+                app:layout_constraintTop_toBottomOf="@+id/company_textView"
+                tools:text="Size" />
+
+            <TextView
+                android:id="@+id/description_textView"
+                style="@style/description_textView"
+                android:text="@{@string/shoe_description(shoe.description)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/size_textView"
+                app:layout_constraintTop_toBottomOf="@+id/size_textView"
+                tools:text="Description" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
